@@ -12,8 +12,9 @@ The DP algorithm takes the form
 \subsection*{A Forward DP Algorithm for Shortest Path Problems}
 An optimal path from $s$ to $t$ is also an optimal path from $t$ to $s$ in a "reverse" shortest path problem. It is given by 
 \begin{align}
-    &\Tilde{J}_N(j)=a_{sj}^0,\quad j\in S_1,\\
-    &\Tilde{J}_k(j)=\min_{i\in S_{N-k}}\left[a_{ij}^{N-k}+\title{J}_{k+1}(i)\right],\quad j\in S_{N-k+1},\quad k=1,2,\dots,N-1.
+    &\tilde{J}_N(j)=a_{sj}^0,\quad j\in S_1,\\
+    &\tilde{J}_k(j)=\min_{i\in S_{N-k}}\left[a_{ij}^{N-k}+\title{J}_{k+1}(i)\right],\quad j\in S_{N-k+1},\quad k=1,2,\dots,N-1.
 \end{align}
 The optimal cost is 
-$$\Tilde{J}_0(t)=\min_{i\in S_N}\left[a_{ij}^N+\Tilde{J}_1(i)\right].$$
+\[\tilde{J}_0(t)=\min_{i\in S_N}\left[a_{ij}^N+\tilde{J}_1(i)\right].\]
+ 
