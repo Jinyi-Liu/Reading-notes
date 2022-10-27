@@ -1,0 +1,19 @@
+\chapter{Deterministic Systems and the Shortest Path Problem}
+In this chapter we focus on deterministic problems, i.e., $w_k$ can take only one value. In contrast with stochastic problems, \textit{using feedback results in no advantage in terms of cost reduction.} 
+
+\section{Finite-State Systems and Shortest Paths}
+The DP algorithm takes the form 
+\begin{equation}
+    J_N(i)=a_{it}^N,\quad i\in S_N,
+\end{equation}
+\begin{equation}
+    J_k(i)=\min_{j\in S_{k+1}}\left[a_{ij}^k+J_{k+1}(j)\right],\quad i\in S_k,\quad k=0,1,\dots,N-1.
+\end{equation}
+\subsection*{A Forward DP Algorithm for Shortest Path Problems}
+An optimal path from $s$ to $t$ is also an optimal path from $t$ to $s$ in a "reverse" shortest path problem. It is given by 
+\begin{align}
+    &\Tilde{J}_N(j)=a_{sj}^0,\quad j\in S_1,\\
+    &\Tilde{J}_k(j)=\min_{i\in S_{N-k}}\left[a_{ij}^{N-k}+\title{J}_{k+1}(i)\right],\quad j\in S_{N-k+1},\quad k=1,2,\dots,N-1.
+\end{align}
+The optimal cost is 
+$$\Tilde{J}_0(t)=\min_{i\in S_N}\left[a_{ij}^N+\Tilde{J}_1(i)\right].$$

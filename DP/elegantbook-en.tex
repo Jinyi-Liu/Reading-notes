@@ -1,0 +1,36 @@
+\documentclass[12pt,draft]{elegantbook}
+
+\title{Dynamic Programming and Optimal Control}
+\subtitle{Study Note}
+
+\author{Jinyi Liu}
+\institute{Haslam Business School, UTK}
+\date{\today}
+% \version{4.3}
+\bioinfo{Bio}{A first-year Ph.D. student in Business Analytics.}
+
+\extrainfo{Victory won\rq t come to us unless we go to it. }
+
+% \logo{logo-blue.png}
+\cover{cover.jpg}
+
+% modify the color in the middle of titlepage
+\definecolor{customcolor}{RGB}{32,178,170}
+\colorlet{coverlinecolor}{customcolor}
+
+\begin{document}
+
+\maketitle
+
+\frontmatter
+\tableofcontents
+
+\mainmatter
+
+\input{Chapters/ch1}
+\input{Chapters/ch2}
+
+\nocite{*}
+\printbibliography[heading=bibintoc, title=\ebibname]
+
+\end{document}

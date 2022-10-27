@@ -1,0 +1,79 @@
+\chapter{The Dynamic Programming Algorithm}
+\section{Introduction}
+\subsection{General Structure of Finite Horizon Optimal Control Problems}
+Our finite horizon model has two principal features: (1) a \textit{discrete-time dynamic system,} and (2) a \textit{cost function that is additive over time.} The system has the form
+$$x_{k+1}=f_k(x_k,u_k,w_k),\quad k=0,1,\dots,N-1,$$
+where
+\begin{center}
+    \begin{tabular}{c|l}
+    $x_k$ & state variable  \\
+    $u_k$ & control variable\\
+    $w_k$ & random parameter,
+    \end{tabular}
+\end{center}
+and $f_k$ is a function the describes the system.
+
+The cost function is additive. The total cost is 
+$$g_N(x_N)+\sum_{i=0}^{N-1}g_k(x_k,u_k,w_k).$$
+Since $w_k$ is random, we formulate the problem as an optimization of the \textit{expected cost}
+$$E\left\{g_N(x_N)+\sum_{i=0}^{N-1}g_k(x_k,u_k,w_k)\right\}.$$
+
+\section{The Basic Problem}
+\subsection*{Basic Problem}
+We are given a discrete-time dynamic system
+$$x_{k+1}=f_k(x_k,u_k,w_k),\quad k=0,1,\dots,N-1,$$
+where the state $x_k\in S_k$, the control $u_k\in C_k$ and the random "disturbance" $w_k$ is an element of a space $D_k$.
+
+The control $u_k$ is constrained to be $u_k\in U_k(x_k)\subset C_k$ for all $x_k\in S_k$ and $k$.
+
+$w_k$ is characterized by a probability distribution $P_k(\cdot|x_k,u_k)$ that may explicitly on $x_k$ and $u_k$ but not on values of prior disturbances $w_{k-1},\dots,w_0.$
+
+We consider the class of polices 
+$$\pi=\{\mu_0,\dots,\mu_{N-1}\}$$,
+where $\mu_k$ maps $x_k$ into controls $u_k=\mu_k(x_k)$ and is such that $\mu_k(x_k)\in U_k(x_k)$ for all $x_k\in S_k$. Such polices will be called \textit{admissible.}
+
+Given $x_0$ and admissible $\pi$, we have 
+\begin{equation}\label{eq:1.1}
+    x_{k+1}=f_k(x_k,\mu_k(x_k),w_k),\quad k=0,1,\dots,N-1
+\end{equation}
+Thus, for given function $g_k$, we have the expected cost of $\pi$ starting at $x_0$:
+$$J_\pi(x_0)=E\left\{g_N(x_N)+\sum_{i=0}^{N-1}g_k(x_k,\mu_k(x_k),w_k)\right\}$$
+where the expectation is taken over $x_k$ and $w_k$. An optimal policy $\pi^*$ is one such that 
+$$J_{\pi^*}(x_0)=\min_{\pi\in\Pi}J_\pi(x_0).$$
+
+\subsection*{The Role and Value of Information}
+\subsection*{Encoding Risk in the Cost Function}
+
+\section{The Dynamic Programming Algorithm}
+The DP algorithm rests on the \textit{principle of optimality}. 
+\subsection*{The DP Algorithm}
+\begin{proposition}
+For every initial state $x_0$, the optimal cost $J^*\left(x_0\right)$ of the basic problem is equal to $J_0\left(x_0\right)$, given by the last step of the following algorithm, which proceeds backward in time from period $N-1$ to period 0 :
+$$
+\begin{gathered}
+J_N\left(x_N\right)=g_N\left(x_N\right), \\
+J_k\left(x_k\right)=\min _{u_k \in U_k\left(x_k\right)} \underset{w_k}{E} \left\{g_k\left(x_k, u_k, w_k\right)+J_{k+1}\left(f_k\left(x_k, u_k, w_k\right)\right)\right\} \\
+k=0,1, \ldots, N-1,
+\end{gathered}
+$$
+where the expectation is taken with respect to the probability distribution of $w_k$, which depends on $x_k$ and $u_k$. Furthermore, if $u_k^*=\mu_k^*\left(x_k\right)$ minimizes the right side of Eq. (1.6) for each $x_k$ and $k$, the policy $\pi^*=\left\{\mu_0^*, \ldots, \mu_{N-1}^*\right\}$ is optimal.
+\end{proposition}
+
+\section{State Augmentation and Other Reformulations}
+The general guideline in \textit{state augmentation} is to \textit{include in the enlarged state at time $k$ all the information that is known to the controller at time $k$ and can be used with advantage in selecting $u_k$}. 
+\subsection*{Time Delays}
+
+\section{Some Mathematical Issues}
+% Not important.
+Well-defined random variables.
+
+\section{Dynamic Programming and Minimax Control}
+Consider a triplet $(\Pi,W,J)$, where $\pi$ is the set of policies under consideration, $W$ is the set in which the uncertain quantities are known to belong, and $J:\Pi\times W\rightarrow[-\infty,+\infty]$ is a given cost function. The objective is to 
+$$\min\underset{w\in W}{\max}J(\pi,w)$$
+over all $\pi\in\Pi$.
+\begin{lemma}
+Let $f: W \rightarrow X$ be a function, and $M$ be the set of all functions $\mu: X \rightarrow U$, where $W, X$, and $U$ are some sets. Then for any functions $G_0: W \rightarrow(-\infty, \infty]$ and $G_1: X \times U \rightarrow(-\infty, \infty]$ such that $$\min _{u \in U} G_1(f(w), u)>-\infty, \quad \text{for all $w \in W$,} $$we have
+$$
+\min _{\mu \in M} \max _{w \in W}\left[G_0(w)+G_1(f(w), \mu(f(w)))\right]=\max _{w \in W}\left[G_0(w)+\min _{u \in U} G_1(f(w), u)\right] .
+$$
+\end{lemma}
