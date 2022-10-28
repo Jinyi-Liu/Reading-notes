@@ -17,4 +17,36 @@ An optimal path from $s$ to $t$ is also an optimal path from $t$ to $s$ in a "re
 \end{align}
 The optimal cost is 
 \[\tilde{J}_0(t)=\min_{i\in S_N}\left[a_{ij}^N+\tilde{J}_1(i)\right].\]
- test for update
+The above equations yield the same result
+\[J_0(s) =\tilde{J}_0(t).\]
+Note that there is no analog of forward DP algorithm for stochastic problems.
+
+\subsection*{Converting a Shortest Path Problem to a Deterministic Finite-Stage Problem}
+
+\section{Some Shortest Path Applications}
+\subsection{Critical Path Analysis}
+\subsection{Hidden Markov Models and the Vaterbi Algorithm}
+We are given the probability $r(z;i,j)$ of an observation taking value $z$ when the state transition is from $i$ to $j$. We assume independent observations; i.e., an observation depends only on its corresponding transition and not on other transitions. Time independent. $\pi$ initial state's probability. 
+
+Given the observation sequence $Z_N=\{z_1,z_2,\dots,z_N\}$, we adopt $\hat{X}_N=\{\hat{x}_0,\hat{x}_1,\dots,\hat{x}_N\}$ that maximizes over all $X_N=\{x_1,x_2,\dots,x_N\}$ the conditional probability $p(X_N|Z_N)$. This is called the \textit{maximum a posteriori probability} approach.
+
+Using independence, we have 
+\begin{equation}
+    p(X_N,Z_N) =\pi_{x_0}\prod_{k = 1}^N\, p_{x_{k - 1}x_k} r(z_k;x_{k - 1},x_k)
+\end{equation}
+
+\textit{Trellis diagram and Viterbi algorithm.}
+
+The problem of maximizing $p(X_N,Z_N)$ is equivalent to the problem 
+\begin{align*}
+    &\text{minimize }-\ln \left(\pi_{x_0}\right)-\sum_{k=1}^N \ln
+    \left(p_{x_{k-1} x_k} r\left(z_k ; x_{k-1}, x_k\right)\right)\, \\
+    &\text{over all possible sequences} \left\{x_0, x_1, \ldots, x_N\right\}.
+\end{align*}
+
+% \begin{example}[(Convolutional Coding and Decoding)]\label{example:2.2.1}
+%     test
+% \end{example}
+\section{Shortest Path Algorithms}
+ To be continued.
+ 

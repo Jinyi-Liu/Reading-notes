@@ -1025,7 +1025,7 @@
 %% Example with counter
 \newcounter{exam}[chapter]
 \setcounter{exam}{0}
-\renewcommand{\theexam}{\thechapter.\arabic{exam}}
+\renewcommand{\theexam}{\thesection.\arabic{exam}}
 \newenvironment{example}[1][]{
   \refstepcounter{exam}
   \par\noindent\textbf{\color{main}{\examplename} \theexam #1 }\rmfamily}{
@@ -1034,7 +1034,7 @@
 %% Exercise with counter
 \newcounter{exer}[chapter]
 \setcounter{exer}{0}
-\renewcommand{\theexer}{\thechapter.\arabic{exer}}
+\renewcommand{\theexer}{\thesection.\arabic{exer}}
 \newenvironment{exercise}[1][]{
   \refstepcounter{exer}
   \par\noindent\makebox[-3pt][r]{
@@ -1045,7 +1045,7 @@
 %% Problem with counter
 \newcounter{prob}[chapter]
 \setcounter{prob}{0}
-\renewcommand{\theprob}{\thechapter.\arabic{prob}}
+\renewcommand{\theprob}{\thesection.\arabic{prob}}
 \newenvironment{problem}[1][]{
   \refstepcounter{prob}
   \par\noindent\textbf{\color{main}{\problemname} \theprob #1 }\rmfamily}{
