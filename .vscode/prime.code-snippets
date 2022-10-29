@@ -38,4 +38,13 @@
 		"prefix": "ipm",
 		"body": "_i^{\\prime} " 
 	},
+	"limk":{
+		"prefix": "lk",
+		"body": "\\lim_{k\\rightarrow\\infty} " 
+	},
+	"rightarrow":{
+		"prefix": "ra",
+		"body": "\\rightarrow ",
+		"description": "Rightarrow "
+	},
 }
