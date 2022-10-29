@@ -56,5 +56,6 @@
         }
     ],
     "latex-utilities.formattedPaste.useAsDefault": true,
-    "latex-utilities.liveReformat.enabled": true
+    "latex-utilities.liveReformat.enabled": true,
+    "editor.tabCompletion": "onlySnippets"
 }
