@@ -10,8 +10,32 @@
 		// "scope": "latex",
 		"prefix": "pm",
 		"body": [
-			"^\\prime",
+			"^\\prime ",
 		],
 		"description": "^prime"
-	}
+	},
+	"pds":{
+		"prefix": "pds",
+		"body": "positive definite symmetric matrix " 
+	},
+	"psds":{
+		"prefix": "pss",
+		"body": "positive semidefinite symmetric matrix " 
+	},
+	"us":{
+		"prefix": "us",
+		"body": "u_0,u_1,\\dots,u_{k-1} " 
+	},
+	"sumk-1":{
+		"prefix": "sumk",
+		"body": "\\sum_{i=0}^{k-1} " 
+	},
+	"0pm":{
+		"prefix": "0pm",
+		"body": "_0^{\\prime} " 
+	},
+	"ipm":{
+		"prefix": "ipm",
+		"body": "_i^{\\prime} " 
+	},
 }
