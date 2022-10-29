@@ -17,7 +17,7 @@ Applying the DP algorithm, we have
     &J_k(x_k) =\min_{u_k}E\{x_k^\prime Q_k x_k + u_k^\prime R_k u_k + J_{k + 1}(A_k x_k + B_k u_k + w_k)\}.
 \end{align}
 We have the optimal control law for every $k$:
-\begin{equation}
+\begin{equation}\label{eq:3.2}
     \mu_k^*(x_k) = L_k x_k,
 \end{equation}
 where 
@@ -31,5 +31,22 @@ The optimal cost is then given by
 \[J_0 (x_0) = x_0^\prime K_0 x_0 + \sum_{k = 0}^{N - 1}E\{w_k^\prime K_{k + 1}w_k\}.\]
 
 \subsection*{The Riccati Equation and Its Asymptotic Behavior}
-
-\autoref{eq:3.4}
+\cref{eq:3.4} is called the \textit{discrete-time Riccati equation}. If the matrices are constant, then as $k\rightarrow\infty$, $K$ satisfies the \textit{algebraic Riccati equation}
+\begin{equation}\label{eq:3.5}
+    K = A^\prime (K - KB(B^\prime K B + R)^{ - 1}B^\prime K)A + Q.
+\end{equation}
+This property indicates that for a large $N$, one can approximate the control law \cref{eq:3.2} by $\{\mu^*,\dots,\mu^*\}$, where
+\begin{equation}
+    \mu^*(x) = L x,
+\end{equation}
+\[L = -(B^\prime K B + R)^{ - 1}B^\prime K A,\] and $K$ solves \cref{eq:3.5}. This control law is \textit{stationary}.
+\begin{definition}
+    A pair $(A, B)$, where $A$ is an $n \times n$ matrix
+    and $B$ is an $n \times m$ matrix, is said to be controllable if the $n
+    \times n m$ matrix \[ \left[B, A B, A^2 B, \ldots, A^{n-1} B\right] \] has
+    full rank (i.e., has linearly independent rows). A pair $(A, C)$, where $A$
+    is an $n \times n$ matrix and $C$ an $m \times n$ matrix, is said to be
+    observable if the pair $\left(A^{\prime}, C^{\prime}\right)$ is controllable,
+    where $A^{\prime}$ and $C^{\prime}$ denote the transposes of $A$ and $C$,
+    respectively.
+\end{definition}
