@@ -9,3 +9,27 @@ In this section we consider the special case of a linear Systems
 and the quadratic cost \begin{equation*}
     \underset{w_k,k = 0,1,\dots,N - 1}{E}\left\{x_N^\prime Q_N x_N +\sum_{k = 0}^{N - 1}(x_k^\prime Q_k x_k + u_k^\prime R_k u_k) \right\}.
 \end{equation*}
+We assume that $Q_k$ are postive semidefinite symmetric and $R_k$ are positive definite symmetric. $w_k$ has 0 mean and finite second moment.
+
+Applying the DP algorithm, we have 
+\begin{align}
+    &J_N(x_N) = x_N^\prime Q_N x_N,\nonumber\\
+    &J_k(x_k) =\min_{u_k}E\{x_k^\prime Q_k x_k + u_k^\prime R_k u_k + J_{k + 1}(A_k x_k + B_k u_k + w_k)\}.
+\end{align}
+We have the optimal control law for every $k$:
+\begin{equation}
+    \mu_k^*(x_k) = L_k x_k,
+\end{equation}
+where 
+\[L_k = -(B_k^\prime K_{k + 1}B_k + R_k)^{ - 1}B_k^\prime K_{k + 1} A_k,\] 
+and where the symmetric positive semidefinite matrices $K_k$ are given by 
+\begin{align}
+    &K_N = Q_N,\\
+    &K_k = A_k^\prime(K_{k + 1} - K_{k + 1}B_k(B_k^\prime K_{k + 1}B_k + R_k)^{ - 1}B_k^\prime K_{k + 1})A_k + Q_k \label{eq:3.4}
+\end{align}
+The optimal cost is then given by 
+\[J_0 (x_0) = x_0^\prime K_0 x_0 + \sum_{k = 0}^{N - 1}E\{w_k^\prime K_{k + 1}w_k\}.\]
+
+\subsection*{The Riccati Equation and Its Asymptotic Behavior}
+
+\autoref{eq:3.4}
