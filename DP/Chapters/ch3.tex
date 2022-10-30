@@ -197,3 +197,24 @@ for any arbitrary positive semidefinite symmetric initial matrix $P_0$.
 \textit{Uniqueness of Solution.}
 If $\tilde{P}$ is another positive semidefinite symmetric solution of \cref{eq:3.9}, we have $P_k(\tilde{P})=\tilde{P}$ for all $k=0,1,\dots$ From the convergence result just proved, we then have \[\lim_{k\rightarrow\infty} P_k(\tilde{P}) = P,\] implying that $\tilde{P}=P$.
 \end{proof}
+
+\subsection*{Random System Matrices}
+\subsection*{On Certainty Equivalence}
+
+\section{Inventory control}
+We assume that excess demand at each period is backlogged and is filled when additional inventory becomes available. This is represented by negative inventory in the system equation
+\[x_{k + 1} = x_k + u_k - w_k,\quad k = 0,1,\dots,N - 1.\]
+We assume that $w_k$ are bounded and independent.
+Consider a holding/shortage cost of the form 
+\[r(x) = p \max(0, - x) + h\max(0,x),\]
+where $p$ and $h$ are nonnegative scalars. Thus we have
+\[\min E\left\{\sum_{i=0}^{N-1}(c u_k + r(x_k + u_k - w)k) \right\}.\]
+We assume that the perchase cost per unit stock $c$ has the property $p>c>0$. 
+
+By applying the DP algorithm, we have 
+\[J_N(x_N) = 0\]
+\begin{equation}
+    J_k(x_k) =\min_{u_k\geq 0}\left[cu_k + H(x_k + u_k) + E\{J_{k + 1}(x_k + u_k - w_k)\}\right],\label{eq:3.23}
+\end{equation}
+where $H$ is defined by 
+\[H(y) = E\left\{r(y - w_k)\right\} = pE\{\max(0,w_k - y)\} + hE\{\max(0,y - w_k)\}.\]
